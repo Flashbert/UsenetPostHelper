@@ -30,11 +30,11 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabMain = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listViewFiles = new System.Windows.Forms.ListView();
-            this.columnFile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cbSplit = new System.Windows.Forms.CheckBox();
+            this.lvFiles = new System.Windows.Forms.ListView();
+            this.lvFilesFilename = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvFilesYenc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnStartPrepare = new System.Windows.Forms.Button();
+            this.tbLog = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txbFolderUpload = new System.Windows.Forms.TextBox();
             this.btnFolderSelect = new System.Windows.Forms.Button();
@@ -57,7 +57,6 @@
             this.btnSelectRar = new System.Windows.Forms.Button();
             this.tbPathRar = new System.Windows.Forms.TextBox();
             this.lblRar = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.tabPath.SuspendLayout();
@@ -76,10 +75,9 @@
             // 
             // tabMain
             // 
-            this.tabMain.Controls.Add(this.textBox1);
-            this.tabMain.Controls.Add(this.button1);
-            this.tabMain.Controls.Add(this.listViewFiles);
-            this.tabMain.Controls.Add(this.cbSplit);
+            this.tabMain.Controls.Add(this.lvFiles);
+            this.tabMain.Controls.Add(this.btnStartPrepare);
+            this.tabMain.Controls.Add(this.tbLog);
             this.tabMain.Controls.Add(this.label1);
             this.tabMain.Controls.Add(this.txbFolderUpload);
             this.tabMain.Controls.Add(this.btnFolderSelect);
@@ -91,45 +89,48 @@
             this.tabMain.Text = "Main";
             this.tabMain.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // lvFiles
             // 
-            this.button1.Location = new System.Drawing.Point(605, 474);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.lvFiles.AutoArrange = false;
+            this.lvFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvFilesFilename,
+            this.lvFilesYenc});
+            this.lvFiles.FullRowSelect = true;
+            this.lvFiles.GridLines = true;
+            this.lvFiles.Location = new System.Drawing.Point(7, 102);
+            this.lvFiles.Name = "lvFiles";
+            this.lvFiles.Size = new System.Drawing.Size(683, 250);
+            this.lvFiles.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.lvFiles.TabIndex = 9;
+            this.lvFiles.UseCompatibleStateImageBehavior = false;
+            this.lvFiles.View = System.Windows.Forms.View.Details;
             // 
-            // listViewFiles
+            // lvFilesFilename
             // 
-            this.listViewFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnFile,
-            this.columnStatus});
-            this.listViewFiles.Location = new System.Drawing.Point(7, 123);
-            this.listViewFiles.Name = "listViewFiles";
-            this.listViewFiles.Size = new System.Drawing.Size(683, 77);
-            this.listViewFiles.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listViewFiles.TabIndex = 4;
-            this.listViewFiles.UseCompatibleStateImageBehavior = false;
+            this.lvFilesFilename.Text = "Filename";
+            this.lvFilesFilename.Width = 618;
             // 
-            // columnFile
+            // lvFilesYenc
             // 
-            this.columnFile.Text = "File";
+            this.lvFilesYenc.Text = "Yenc";
             // 
-            // columnStatus
+            // btnStartPrepare
             // 
-            this.columnStatus.Text = "Status";
+            this.btnStartPrepare.Location = new System.Drawing.Point(615, 484);
+            this.btnStartPrepare.Name = "btnStartPrepare";
+            this.btnStartPrepare.Size = new System.Drawing.Size(75, 23);
+            this.btnStartPrepare.TabIndex = 8;
+            this.btnStartPrepare.Text = "Prepare";
+            this.btnStartPrepare.UseVisualStyleBackColor = true;
+            this.btnStartPrepare.Click += new System.EventHandler(this.btnStartPrepare_Click_1);
             // 
-            // cbSplit
+            // tbLog
             // 
-            this.cbSplit.AutoSize = true;
-            this.cbSplit.Location = new System.Drawing.Point(10, 100);
-            this.cbSplit.Name = "cbSplit";
-            this.cbSplit.Size = new System.Drawing.Size(52, 17);
-            this.cbSplit.TabIndex = 3;
-            this.cbSplit.Text = "Split?";
-            this.cbSplit.UseVisualStyleBackColor = true;
+            this.tbLog.Location = new System.Drawing.Point(7, 358);
+            this.tbLog.Multiline = true;
+            this.tbLog.Name = "tbLog";
+            this.tbLog.Size = new System.Drawing.Size(683, 96);
+            this.tbLog.TabIndex = 6;
             // 
             // label1
             // 
@@ -357,14 +358,6 @@
             this.lblRar.TabIndex = 0;
             this.lblRar.Text = "Select location of rar.exe";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(97, 232);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(366, 189);
-            this.textBox1.TabIndex = 6;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,6 +368,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UsenetUploadHelper";
             this.tabControl1.ResumeLayout(false);
             this.tabMain.ResumeLayout(false);
@@ -394,7 +388,6 @@
         private System.Windows.Forms.Button btnFolderSelect;
         private System.Windows.Forms.TextBox txbFolderUpload;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox cbSplit;
         private System.Windows.Forms.Button btnSelectRar;
         private System.Windows.Forms.TextBox tbPathRar;
         private System.Windows.Forms.Label lblRar;
@@ -404,9 +397,6 @@
         private System.Windows.Forms.Button btnSelectPar;
         private System.Windows.Forms.TextBox tbPathPar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListView listViewFiles;
-        private System.Windows.Forms.ColumnHeader columnFile;
-        private System.Windows.Forms.ColumnHeader columnStatus;
         private System.Windows.Forms.Button btnSelectTemp;
         private System.Windows.Forms.TextBox tbPathTemp;
         private System.Windows.Forms.Label label2;
@@ -415,8 +405,11 @@
         private System.Windows.Forms.CheckBox cbRarsettingsNoComp;
         private System.Windows.Forms.CheckBox cbRarsettingsRecursive;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbLog;
+        private System.Windows.Forms.Button btnStartPrepare;
+        private System.Windows.Forms.ListView lvFiles;
+        private System.Windows.Forms.ColumnHeader lvFilesFilename;
+        private System.Windows.Forms.ColumnHeader lvFilesYenc;
     }
 }
 

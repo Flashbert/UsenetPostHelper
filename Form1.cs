@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace UsenetPostHelper
 {
@@ -17,6 +18,45 @@ namespace UsenetPostHelper
             InitializeComponent();
         }
 
+        public string Logbox
+        {
+            get { return tbLog.Text; }
+            set { tbLog.Text = value; }
+        }
+
+        public string PathTemp
+        {
+            get { return tbPathTemp.Text; }
+        }
+
+        public string PathRar
+        {
+            get { return tbPathRar.Text; }
+        }
+
+
+        //LISTVIEW
+        private void ListviewFill(string rarname)
+        {
+            lvFiles.Items.Clear();
+
+            string[] files = Directory.GetFiles(tbPathTemp.Text);
+            foreach (string file in files)
+            {
+
+                string fileName = Path.GetFileName(file);
+                if (fileName.StartsWith(rarname))
+                {
+                    ListViewItem item = new ListViewItem(fileName);
+                    item.Tag = file;
+
+                    lvFiles.Items.Add(item);
+                }
+            }
+        }
+
+
+        //Buttons
         private void btnFolderSelect_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderSelectUpload = new FolderBrowserDialog();
@@ -33,7 +73,6 @@ namespace UsenetPostHelper
             fdSelectRar.FilterIndex = 1;
             fdSelectRar.Multiselect = false;
 
-            //fdSelectRar.ShowDialog();
             if (fdSelectRar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 tbPathRar.Text = fdSelectRar.FileName;
@@ -55,11 +94,15 @@ namespace UsenetPostHelper
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnStartPrepare_Click_1(object sender, EventArgs e)
         {
-            Rar rar = new Rar();
-            rar.Compressfolder();
-            //textBox1.Text = rar.Compressfolder();
+            Rar rar = new Rar(this);
+            string rarname = rar.CompressFolder();
+            if(rarname != null)
+            {
+                ListviewFill(rarname);
+            }
         }
+
     }
 }
