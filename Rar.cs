@@ -19,24 +19,6 @@ namespace UsenetPostHelper
             this.form = form;
         }
 
-       /* public string Compressfolder() 
-        {
-            ProcessStartInfo startInfo = new ProcessStartInfo(@"C:\Program Files\WinRAR\rar.exe", @"a D:\TempUploadHelper\" + GetTimestamp(DateTime.Now) + @" -r -m0 -ep1 -v50m D:\weihnachten2011")
-            {
-                WindowStyle = ProcessWindowStyle.Hidden,
-                UseShellExecute = false,
-                RedirectStandardOutput = false,
-                CreateNoWindow = false
-            };
-            var process = Process.Start(startInfo);
-            process.WaitForExit(1000);
-            return "Rar process finished!";
-        }
-        */
-        //TEST
-
-        //private static int lineCount = 0;
-        //private static StringBuilder output = new StringBuilder();
 
         public string CompressFolder()
         {
@@ -55,16 +37,17 @@ namespace UsenetPostHelper
                 }
 
                 process.StartInfo.FileName = form.PathRar;
-                process.StartInfo.Arguments = @"a " + form.PathTemp + timestamp + @" -r -m0 -ep1 -v50m D:\Wallpapers";
+                process.StartInfo.Arguments = @"a " + form.PathTemp + timestamp + @" -r -mx0 -v50m " + form.PathUploadFolder;
                 process.StartInfo.UseShellExecute = false;
-                process.StartInfo.CreateNoWindow = false;
+                process.StartInfo.CreateNoWindow = true;
                 process.StartInfo.RedirectStandardOutput = false;
 
                 process.Start();
+                form.Logbox += "Creating archive from " + form.PathUploadFolder + " as " + timestamp + "\r\n";
                 process.WaitForExit();
                 process.Close();
 
-                form.Logbox += "RAR finished";
+                form.Logbox += "Archiving finished\r\n";
                 return timestamp;
             }
             catch(Exception ex)

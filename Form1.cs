@@ -18,6 +18,7 @@ namespace UsenetPostHelper
             InitializeComponent();
         }
 
+        //Getter setter
         public string Logbox
         {
             get { return tbLog.Text; }
@@ -32,6 +33,11 @@ namespace UsenetPostHelper
         public string PathRar
         {
             get { return tbPathRar.Text; }
+        }
+
+        public string PathUploadFolder
+        {
+            get { return txbUploadFolder.Text;  }
         }
 
 
@@ -62,14 +68,14 @@ namespace UsenetPostHelper
             FolderBrowserDialog folderSelectUpload = new FolderBrowserDialog();
             if(folderSelectUpload.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                txbFolderUpload.Text = folderSelectUpload.SelectedPath;
+                txbUploadFolder.Text = folderSelectUpload.SelectedPath;
             }
         }
 
         private void btnSelectRar_Click(object sender, EventArgs e)
         {
             OpenFileDialog fdSelectRar = new OpenFileDialog();
-            fdSelectRar.Filter = "Rar Executable|rar.exe";
+            fdSelectRar.Filter = "Rar or 7zip|rar.exe|7z.exe";
             fdSelectRar.FilterIndex = 1;
             fdSelectRar.Multiselect = false;
 

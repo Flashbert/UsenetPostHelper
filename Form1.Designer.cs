@@ -36,7 +36,7 @@
             this.btnStartPrepare = new System.Windows.Forms.Button();
             this.tbLog = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txbFolderUpload = new System.Windows.Forms.TextBox();
+            this.txbUploadFolder = new System.Windows.Forms.TextBox();
             this.btnFolderSelect = new System.Windows.Forms.Button();
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.tabPath = new System.Windows.Forms.TabPage();
@@ -79,7 +79,7 @@
             this.tabMain.Controls.Add(this.btnStartPrepare);
             this.tabMain.Controls.Add(this.tbLog);
             this.tabMain.Controls.Add(this.label1);
-            this.tabMain.Controls.Add(this.txbFolderUpload);
+            this.tabMain.Controls.Add(this.txbUploadFolder);
             this.tabMain.Controls.Add(this.btnFolderSelect);
             this.tabMain.Location = new System.Drawing.Point(4, 22);
             this.tabMain.Name = "tabMain";
@@ -141,12 +141,12 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Select the folder you want to post:";
             // 
-            // txbFolderUpload
+            // txbUploadFolder
             // 
-            this.txbFolderUpload.Location = new System.Drawing.Point(7, 65);
-            this.txbFolderUpload.Name = "txbFolderUpload";
-            this.txbFolderUpload.Size = new System.Drawing.Size(540, 20);
-            this.txbFolderUpload.TabIndex = 1;
+            this.txbUploadFolder.Location = new System.Drawing.Point(7, 65);
+            this.txbUploadFolder.Name = "txbUploadFolder";
+            this.txbUploadFolder.Size = new System.Drawing.Size(540, 20);
+            this.txbUploadFolder.TabIndex = 1;
             // 
             // btnFolderSelect
             // 
@@ -347,16 +347,16 @@
             this.tbPathRar.Name = "tbPathRar";
             this.tbPathRar.Size = new System.Drawing.Size(542, 20);
             this.tbPathRar.TabIndex = 1;
-            this.tbPathRar.Text = "C:\\Program Files\\WinRAR\\rar.exe";
+            this.tbPathRar.Text = "C:\\Program Files\\7-Zip\\7z.exe";
             // 
             // lblRar
             // 
             this.lblRar.AutoSize = true;
             this.lblRar.Location = new System.Drawing.Point(7, 21);
             this.lblRar.Name = "lblRar";
-            this.lblRar.Size = new System.Drawing.Size(124, 13);
+            this.lblRar.Size = new System.Drawing.Size(123, 13);
             this.lblRar.TabIndex = 0;
-            this.lblRar.Text = "Select location of rar.exe";
+            this.lblRar.Text = "Select location of 7z.exe";
             // 
             // Main
             // 
@@ -386,7 +386,7 @@
         private System.Windows.Forms.TabPage tabSettings;
         private System.Windows.Forms.TabPage tabPath;
         private System.Windows.Forms.Button btnFolderSelect;
-        private System.Windows.Forms.TextBox txbFolderUpload;
+        private System.Windows.Forms.TextBox txbUploadFolder;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSelectRar;
         private System.Windows.Forms.TextBox tbPathRar;
