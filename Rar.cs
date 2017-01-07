@@ -24,7 +24,9 @@ namespace UsenetPostHelper
         {
             string timestamp = GetTimestamp(DateTime.Now);
             Process process = new Process();
-
+            string RarsettingsCompression = " ";
+            string RarsettingsSize = " ";
+            string RarsettingsRecursive = " ";
             try
             {
                 if (!File.Exists(form.PathRar))
@@ -35,9 +37,17 @@ namespace UsenetPostHelper
                 {
                     throw new DirectoryNotFoundException("Temporary folder does not exist. Please check if path is set correctly and it exists!");
                 }
+                if (form.RarsettingsNoCompression == true)
+                    RarsettingsCompression = " -m0";
+
+                if (form.RarsettingsRecursive == true)
+                    RarsettingsRecursive = " -r";
+
+                if (form.RarsettingsSize.SelectedItem != null)
+                    RarsettingsSize = " -v" + form.RarsettingsSize.SelectedItem.ToString();
 
                 process.StartInfo.FileName = form.PathRar;
-                process.StartInfo.Arguments = @"a " + form.PathTemp + timestamp + @" -r -mx0 -v50m " + form.PathUploadFolder;
+                process.StartInfo.Arguments = @"a -ep1 " + form.PathTemp + timestamp + RarsettingsRecursive + RarsettingsCompression + RarsettingsSize + " " + form.PathUploadFolder;
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.CreateNoWindow = true;
                 process.StartInfo.RedirectStandardOutput = false;

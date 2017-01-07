@@ -41,7 +41,6 @@
             this.tabSettings = new System.Windows.Forms.TabPage();
             this.tabPath = new System.Windows.Forms.TabPage();
             this.cbRarsettingsSize = new System.Windows.Forms.ComboBox();
-            this.cbRarsettingsNoBasedir = new System.Windows.Forms.CheckBox();
             this.cbRarsettingsNoComp = new System.Windows.Forms.CheckBox();
             this.cbRarsettingsRecursive = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -135,7 +134,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 49);
+            this.label1.Location = new System.Drawing.Point(7, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(168, 13);
             this.label1.TabIndex = 2;
@@ -143,14 +142,14 @@
             // 
             // txbUploadFolder
             // 
-            this.txbUploadFolder.Location = new System.Drawing.Point(7, 65);
+            this.txbUploadFolder.Location = new System.Drawing.Point(7, 28);
             this.txbUploadFolder.Name = "txbUploadFolder";
-            this.txbUploadFolder.Size = new System.Drawing.Size(540, 20);
+            this.txbUploadFolder.Size = new System.Drawing.Size(602, 20);
             this.txbUploadFolder.TabIndex = 1;
             // 
             // btnFolderSelect
             // 
-            this.btnFolderSelect.Location = new System.Drawing.Point(553, 63);
+            this.btnFolderSelect.Location = new System.Drawing.Point(615, 27);
             this.btnFolderSelect.Name = "btnFolderSelect";
             this.btnFolderSelect.Size = new System.Drawing.Size(75, 23);
             this.btnFolderSelect.TabIndex = 0;
@@ -171,7 +170,6 @@
             // tabPath
             // 
             this.tabPath.Controls.Add(this.cbRarsettingsSize);
-            this.tabPath.Controls.Add(this.cbRarsettingsNoBasedir);
             this.tabPath.Controls.Add(this.cbRarsettingsNoComp);
             this.tabPath.Controls.Add(this.cbRarsettingsRecursive);
             this.tabPath.Controls.Add(this.label5);
@@ -201,23 +199,13 @@
             "10m",
             "20m",
             "50m",
-            "100m"});
+            "100m",
+            "200m",
+            "500m"});
             this.cbRarsettingsSize.Location = new System.Drawing.Point(428, 78);
             this.cbRarsettingsSize.Name = "cbRarsettingsSize";
             this.cbRarsettingsSize.Size = new System.Drawing.Size(121, 21);
             this.cbRarsettingsSize.TabIndex = 17;
-            // 
-            // cbRarsettingsNoBasedir
-            // 
-            this.cbRarsettingsNoBasedir.AutoSize = true;
-            this.cbRarsettingsNoBasedir.Checked = true;
-            this.cbRarsettingsNoBasedir.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRarsettingsNoBasedir.Location = new System.Drawing.Point(196, 80);
-            this.cbRarsettingsNoBasedir.Name = "cbRarsettingsNoBasedir";
-            this.cbRarsettingsNoBasedir.Size = new System.Drawing.Size(161, 17);
-            this.cbRarsettingsNoBasedir.TabIndex = 16;
-            this.cbRarsettingsNoBasedir.Text = "Exclude base dir from names";
-            this.cbRarsettingsNoBasedir.UseVisualStyleBackColor = true;
             // 
             // cbRarsettingsNoComp
             // 
@@ -268,16 +256,16 @@
             this.tbPathTemp.Name = "tbPathTemp";
             this.tbPathTemp.Size = new System.Drawing.Size(542, 20);
             this.tbPathTemp.TabIndex = 10;
-            this.tbPathTemp.Text = "D:\\TempUploadHelper\\";
+            this.tbPathTemp.Text = "C:\\Test\\Temp\\";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(7, 259);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(299, 13);
+            this.label2.Size = new System.Drawing.Size(148, 13);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Temporary Folder (Make sure there are no files/folders below!)";
+            this.label2.Text = "Temporary Folder (Ending \\!!!)";
             // 
             // btnSelectYenc
             // 
@@ -347,16 +335,16 @@
             this.tbPathRar.Name = "tbPathRar";
             this.tbPathRar.Size = new System.Drawing.Size(542, 20);
             this.tbPathRar.TabIndex = 1;
-            this.tbPathRar.Text = "C:\\Program Files\\7-Zip\\7z.exe";
+            this.tbPathRar.Text = "C:\\Program Files\\WinRAR\\rar.exe";
             // 
             // lblRar
             // 
             this.lblRar.AutoSize = true;
             this.lblRar.Location = new System.Drawing.Point(7, 21);
             this.lblRar.Name = "lblRar";
-            this.lblRar.Size = new System.Drawing.Size(123, 13);
+            this.lblRar.Size = new System.Drawing.Size(129, 13);
             this.lblRar.TabIndex = 0;
-            this.lblRar.Text = "Select location of 7z.exe";
+            this.lblRar.Text = "Select location of Rar.exe";
             // 
             // Main
             // 
@@ -401,7 +389,6 @@
         private System.Windows.Forms.TextBox tbPathTemp;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbRarsettingsSize;
-        private System.Windows.Forms.CheckBox cbRarsettingsNoBasedir;
         private System.Windows.Forms.CheckBox cbRarsettingsNoComp;
         private System.Windows.Forms.CheckBox cbRarsettingsRecursive;
         private System.Windows.Forms.Label label5;

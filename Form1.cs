@@ -40,6 +40,21 @@ namespace UsenetPostHelper
             get { return txbUploadFolder.Text;  }
         }
 
+        public bool RarsettingsNoCompression
+        {
+            get { return cbRarsettingsNoComp.Checked;  }
+        }
+
+        public bool RarsettingsRecursive
+        {
+            get { return cbRarsettingsRecursive.Checked; }
+        }
+
+        public ComboBox RarsettingsSize
+        {
+            get { return cbRarsettingsSize;  }
+        }
+
 
         //LISTVIEW
         private void ListviewFill(string rarname)
@@ -75,7 +90,7 @@ namespace UsenetPostHelper
         private void btnSelectRar_Click(object sender, EventArgs e)
         {
             OpenFileDialog fdSelectRar = new OpenFileDialog();
-            fdSelectRar.Filter = "Rar or 7zip|rar.exe|7z.exe";
+            fdSelectRar.Filter = "Rar.exe|rar.exe";
             fdSelectRar.FilterIndex = 1;
             fdSelectRar.Multiselect = false;
 
